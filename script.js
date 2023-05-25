@@ -68,7 +68,7 @@ const myfun = async () => {
         }
     };
 
-    let lt, lo
+    let lt, lo,fuuu=0
     await fetch(url1, options).then((response) => {
         return response.json()
     }).then((value) => {
@@ -77,7 +77,16 @@ const myfun = async () => {
         // lo = value[0].lon;
         lt = value.locations[0].lat;
         lo = value.locations[0].lon;
+    }).catch((error)=>{
+        let report_data=document.getElementById("report_data")
+        ihtml=""
+        ihtml=`
+        <h2 style="text-align: center;">Invalid Location</h2>
+        `
+        report_data.innerHTML=ihtml
+        fuuu=1
     })
+    if(fuuu==1) return
     console.log(lt)
     console.log(lo)
 
@@ -141,7 +150,7 @@ const myfun = async () => {
 
 
 
-    return
+    
 }
 
 
